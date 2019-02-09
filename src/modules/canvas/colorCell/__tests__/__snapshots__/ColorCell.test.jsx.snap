@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorCell renders consistently 1`] = `
+<div
+  className="cell"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#34F600",
+    }
+  }
+>
+   
+</div>
+`;
