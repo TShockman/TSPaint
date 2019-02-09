@@ -1,12 +1,14 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import theme from './colorCell.scss';
+import cx from 'classnames';
 
 export default class ColorCell extends PureComponent {
   static propTypes = {
     index: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired,
     onSelect: PropTypes.func.isRequired,
+    className: PropTypes.string
   };
 
   handleClick = event => {
@@ -17,9 +19,11 @@ export default class ColorCell extends PureComponent {
   };
 
   render() {
-    const {color} = this.props;
+    const {color, className} = this.props;
     return (
-      <div className="cell" style={{backgroundColor: color}} onClick={this.handleClick}> </div>
+      <div className={cx("cell", className)}
+           style={{backgroundColor: color}}
+           onClick={this.handleClick}> </div>
     );
   }
 }

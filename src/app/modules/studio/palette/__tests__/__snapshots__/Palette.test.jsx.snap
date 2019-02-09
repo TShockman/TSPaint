@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palette renders consistently, marking active color 1`] = `
+<div
+  className="palette"
+>
+  <ColorCell
+    className=""
+    color="#000000"
+    index={0}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    className=""
+    color="#333333"
+    index={1}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    className="active"
+    color="#555555"
+    index={2}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    className=""
+    color="#FFFFFF"
+    index={3}
+    onSelect={[MockFunction]}
+  />
+</div>
+`;

@@ -1,4 +1,4 @@
-import ColorCell from '../ColorCell';
+import ColorCell from '../index';
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 import { mount } from 'enzyme';
