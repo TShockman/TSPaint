@@ -10,12 +10,18 @@ export default class Sidebar extends Component {
       canvasColors: PropTypes.arrayOf(PropTypes.string).isRequired,
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     })).isRequired,
-    newPainting: PropTypes.func.isRequired
+    newPainting: PropTypes.func.isRequired,
+    loadPainting: PropTypes.func.isRequired
   };
 
   handleNew = event => {
     const {newPainting} = this.props;
     newPainting();
+  };
+
+  handleLoadFactory = painting => event => {
+    const {loadPainting} = this.props;
+    loadPainting({painting});
   };
 
   render() {
@@ -25,7 +31,14 @@ export default class Sidebar extends Component {
         <h1>My Paintings</h1>
         <ul>
           <li><button onClick={this.handleNew}>New Painting</button></li>
-          {paintings.map(painting => <li key={painting.paintingId}>{painting.title}</li>)}
+          {paintings.map(painting => {
+              return (
+                  <li key={painting.paintingId}>
+                    <span>{painting.title}</span>
+                    <button onClick={this.handleLoadFactory(painting)}>-></button>
+                  </li>
+              );
+          })}
         </ul>
       </div>
     );
