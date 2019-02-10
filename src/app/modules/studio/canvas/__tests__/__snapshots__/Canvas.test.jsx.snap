@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Canvas renders consistently 1`] = `
+<div
+  className="canvas"
+>
+  <ColorCell
+    color="#333333"
+    index={0}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    color="#F0F000"
+    index={1}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    color="#00F730"
+    index={2}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    color="#333333"
+    index={3}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    color="#F0F000"
+    index={4}
+    onSelect={[MockFunction]}
+  />
+  <ColorCell
+    color="#00F730"
+    index={5}
+    onSelect={[MockFunction]}
+  />
+</div>
+`;
