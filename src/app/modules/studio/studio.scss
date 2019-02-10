@@ -4,5 +4,22 @@
   left: 20vw;
   background-color: aqua;
   height: 100%;
-  width: 100%;
+  width: 80vw;
+}
+
+.palettePane {
+  position: fixed;
+  top: 20vw;
+  left: 23vw;
+}
+
+.canvasPane {
+  margin: 0 19vw;
+  width: 40vw;
+}
+
+
+.titlePane {
+  display: flex;
+  justify-content: space-between;
 }
