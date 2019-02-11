@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
       return state.set('paintings', newPaintings);
     }
     case IMPORT_PAINTING_FULFILLED: {
-      const newPaintings = {...state.paintings, [action.paintingId]: action.painting};
+      const newPaintings = {...state.paintings, [action.painting.paintingId]: action.painting};
       return state.set('paintings', newPaintings);
     }
     default: {

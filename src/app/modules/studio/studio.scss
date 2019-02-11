@@ -2,19 +2,20 @@
   position: fixed;
   top: 0;
   left: 20vw;
-  background-color: aqua;
+  background-color: white;
   height: 100%;
   width: 80vw;
+  padding-top: 3vh;
 }
 
 .palettePane {
   position: fixed;
   top: 20vw;
-  left: 23vw;
+  left: 27vw;
 }
 
 .canvasPane {
-  margin: 0 19vw;
+  margin: .5vh 19vw;
   width: 40vw;
 }
 
@@ -22,4 +23,73 @@
 .titlePane {
   display: flex;
   justify-content: space-between;
+
+
+  #title {
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    min-width: 20vw;
+  }
+
+  .save {
+    background-color: lightgreen;
+    color: white;
+    border-radius: 2px;
+    height: 3vw;
+    width: 7vw;
+    font-size: 16px;
+  }
 }
+
+.tagPane {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 40vw;
+
+  .tagInput {
+    border-radius: 500px;
+    border: 2px solid black;
+    width: 7vw;
+    height: 4vh;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    margin: 0.35vh;
+
+    input {
+      width: 4vw;
+      height: 4vh;
+      font-size: 12px;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+    button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+
+  .tagged {
+    border-radius: 500px;
+    height: 4vh;
+    background-color: lightgray;
+    padding: 0 10px;
+    font-size: 12px;
+    margin: .25vh 5px;
+    line-height: 4vh;
+  }
+}
+
+.undoPane {
+  margin-left: .25vw;
+
+  button {
+    margin-right: 1vh;
+    border-radius: 5px;
+  }
+}
+

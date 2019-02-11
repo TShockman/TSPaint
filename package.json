@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "acorn": "^6.1.0",
+    "material-icons-react": "^1.0.4",
     "redux-saga": "^0.16.2"
   }
 }

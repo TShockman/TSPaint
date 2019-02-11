@@ -3,6 +3,7 @@ import Palette from './palette';
 import PropTypes from 'prop-types';
 import theme from './studio.scss';
 import Canvas from './canvas/Canvas';
+import MaterialIcon from 'material-icons-react';
 
 export default class Studio extends Component {
   static propTypes = {
@@ -87,19 +88,21 @@ export default class Studio extends Component {
         <div className="canvasPane">
           <div className="titlePane">
             <input id="title" name="title" type="text" value={title} onChange={this.handleTitleChange}/>
-            <button onClick={this.handleSave}>Save</button>
+            <button onClick={this.handleSave} className="save">Save</button>
           </div>
           <div className="tagPane">
-            <input id="tag" name="tag" type="text" value={tagInProgress} onChange={this.handleTagChange}/>
-            <button onClick={this.handleAddTag}>+</button>
+            <span className="tagInput">
+              <input placeholder="Tag" id="tag" name="tag" type="text" value={tagInProgress} onChange={this.handleTagChange}/>
+              <button onClick={this.handleAddTag}><MaterialIcon icon="add" size="tiny"/></button>
+            </span>
             {
-              tags.map((tag, i) => <span key={i}> {tag} </span>)
+              tags.map((tag, i) => <span className="tagged" key={i}>{tag}</span>)
             }
           </div>
           <Canvas colors={canvasColors} colorCanvasCell={colorCanvasCell}/>
-          <div>
-            <button onClick={this.handleUndo}>Undo</button>
-            <button onClick={this.handleRedo}>Redo</button>
+          <div className="undoPane">
+            <button onClick={this.handleUndo}><MaterialIcon icon="undo" color="#000000"/></button>
+            <button onClick={this.handleRedo}><MaterialIcon icon="redo" color="#000000"/></button>
           </div>
         </div>
       </div>
