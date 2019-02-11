@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import theme from './app.scss';
 import Sidebar from './modules/sidebar';
 import Studio from './modules/studio';
 import {Provider} from 'react-redux';
