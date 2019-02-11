@@ -1,5 +1,5 @@
 import {Record} from 'immutable';
-import {COLOR_CANVAS_CELL, SELECT_PEN_COLOR, UPDATE_TITLE, ADD_TAG} from './actions';
+import {COLOR_CANVAS_CELL, SELECT_PEN_COLOR, UPDATE_TITLE, ADD_TAG, UNDO, REDO} from './actions';
 import {defaultColors} from './constants';
 import uuidv4 from 'uuid/v4';
 import {LOAD_PAINTING, NEW_PAINTING} from '../sidebar/actions';
@@ -45,10 +45,33 @@ export default (state = initialState(), action) => {
     case NEW_PAINTING:
       return initialState();
     case LOAD_PAINTING:
+      state = initialState();
       state = state.set("canvasColors", action.painting.canvasColors);
       state = state.set("title", action.painting.title);
       state = state.set("tags", action.painting.tags);
       return state.set("paintingId", action.painting.paintingId);
+    case UNDO:
+      const doneActions = state.doneActions;
+      if (doneActions.length === 0) {
+        return state;
+      }
+      const lastAction = doneActions.pop();
+      state = state.set('doneActions', doneActions);
+      state = state.set('undoneActions', state.undoneActions.concat([lastAction]));
+      return state.set('canvasColors', state.canvasColors.map((canvColor, i) => {
+        return i === lastAction.index ? lastAction.from : canvColor;
+      }));
+    case REDO:
+      const undoneActions = state.undoneActions;
+      if (undoneActions.length === 0) {
+        return state;
+      }
+      const redoAction = undoneActions.pop();
+      state = state.set('undoneActions', undoneActions);
+      state = state.set('doneActions', state.doneActions.concat([redoAction]));
+      return state.set('canvasColors', state.canvasColors.map((canvColor, i) => {
+        return i === redoAction.index ? redoAction.to : canvColor;
+      }));
     default: {
       return state;
     }

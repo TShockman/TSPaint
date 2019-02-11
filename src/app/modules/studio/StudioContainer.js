@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Studio from './Studio';
-import {SELECT_PEN_COLOR, COLOR_CANVAS_CELL, UPDATE_TITLE, ADD_TAG, SAVE} from './actions';
+import {SELECT_PEN_COLOR, COLOR_CANVAS_CELL, UPDATE_TITLE, ADD_TAG, SAVE, UNDO, REDO} from './actions';
 import {selectStudioState} from './selectors';
 
 function mapStateToProps(state) {
@@ -32,6 +32,12 @@ function mapDispatchToProps(dispatch) {
       type: SAVE,
       paintingId,
       painting
+    }),
+    undo: () => dispatch({
+      type: UNDO
+    }),
+    redo: () => dispatch({
+      type: REDO
     })
   }
 }

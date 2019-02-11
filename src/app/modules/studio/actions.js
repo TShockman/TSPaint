@@ -5,3 +5,5 @@ export const COLOR_CANVAS_CELL = `${NAME}/COLOR_CANVAS_CELL`;
 export const UPDATE_TITLE = `${NAME}/UPDATE_TITLE`;
 export const ADD_TAG = `${NAME}/ADD_TAG`;
 export const SAVE = `${NAME}/SAVE`;
+export const UNDO = `${NAME}/UNDO`;
+export const REDO = `${NAME}/REDO`;

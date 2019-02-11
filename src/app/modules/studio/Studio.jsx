@@ -16,7 +16,9 @@ export default class Studio extends Component {
     paintingId: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     addTag: PropTypes.func.isRequired,
-    save: PropTypes.func.isRequired
+    save: PropTypes.func.isRequired,
+    undo: PropTypes.func.isRequired,
+    redo: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -54,6 +56,16 @@ export default class Studio extends Component {
     save({painting, paintingId});
   };
 
+  handleUndo = event => {
+    const {undo} = this.props;
+    undo();
+  };
+
+  handleRedo = event => {
+    const {redo} = this.props;
+    redo();
+  };
+
   render() {
     const {
       paletteColors,
@@ -85,6 +97,10 @@ export default class Studio extends Component {
             }
           </div>
           <Canvas colors={canvasColors} colorCanvasCell={colorCanvasCell}/>
+          <div>
+            <button onClick={this.handleUndo}>Undo</button>
+            <button onClick={this.handleRedo}>Redo</button>
+          </div>
         </div>
       </div>
     );
