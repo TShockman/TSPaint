@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {selectSidebarState} from './selectors';
 import Sidebar from './Sidebar';
-import {NEW_PAINTING, LOAD_PAINTING} from './actions';
+import {NEW_PAINTING, LOAD_PAINTING, IMPORT_PAINTING_REQUESTED} from './actions';
 
 function mapStateToProps(state) {
   const {paintings} = selectSidebarState(state);
@@ -16,6 +16,10 @@ function mapDispatchToProps(dispatch) {
     loadPainting: ({painting}) => dispatch({
       type: LOAD_PAINTING,
       painting
+    }),
+    importPainting: ({fileBlob}) => dispatch({
+      type: IMPORT_PAINTING_REQUESTED,
+      fileBlob
     })
   }
 }

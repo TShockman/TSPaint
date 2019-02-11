@@ -26,7 +26,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
-    "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
     "css-loader": "^2.1.0",
     "enzyme": "^3.8.0",
@@ -37,12 +36,13 @@
     "immutable": "^4.0.0-rc.12",
     "jest": "^24.1.0",
     "node-sass": "^4.11.0",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
     "react-test-renderer": "^16.8.1",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "uuid": "^3.3.2",
@@ -58,5 +58,9 @@
     "setupFilesAfterEnv": [
       "./src/setupTests.js"
     ]
+  },
+  "dependencies": {
+    "acorn": "^6.1.0",
+    "redux-saga": "^0.16.2"
   }
 }

@@ -11,7 +11,8 @@ export default class Sidebar extends Component {
       tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     })).isRequired,
     newPainting: PropTypes.func.isRequired,
-    loadPainting: PropTypes.func.isRequired
+    loadPainting: PropTypes.func.isRequired,
+    importPainting: PropTypes.func.isRequired
   };
 
   handleNew = event => {
@@ -24,6 +25,15 @@ export default class Sidebar extends Component {
     loadPainting({painting});
   };
 
+  handleImport = event => {
+    const {importPainting} = this.props;
+    if (event.target.files.length > 0) {
+      console.log(event.target.files[0])
+      importPainting({fileBlob: event.target.files[0]});
+    }
+    event.preventDefault();
+  };
+
   render() {
     const {paintings} = this.props;
     return (
@@ -32,14 +42,21 @@ export default class Sidebar extends Component {
         <ul>
           <li><button onClick={this.handleNew}>New Painting</button></li>
           {paintings.map(painting => {
-              return (
-                  <li key={painting.paintingId}>
-                    <span>{painting.title}</span>
-                    <button onClick={this.handleLoadFactory(painting)}>-></button>
-                  </li>
-              );
+            const json = JSON.stringify(painting);
+            const blob = new Blob([json], {type: "application/json"});
+            const url  = URL.createObjectURL(blob);
+            return (
+              <li key={painting.paintingId}>
+                <span>{painting.title}</span>
+                <a download={`${painting.title}.json`} href={url}>D</a>
+                <button onClick={this.handleLoadFactory(painting)}>-></button>
+              </li>
+            );
           })}
         </ul>
+        <button>
+          <input onChange={this.handleImport} type="file"/>
+        </button>
       </div>
     );
   }
