@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import MaterialIcon from 'material-icons-react';
+
 import theme from './sidebar.scss';
 
 export default class Sidebar extends Component {
@@ -64,25 +66,34 @@ export default class Sidebar extends Component {
     return (
       <div className="sidebar">
         <h1>My Paintings</h1>
-        <input type="text" id="search" name="search" onChange={this.handleSearch} value={search}/>
-        <ul>
+        <div className="paintingList">
+          <div className="item">
+            <MaterialIcon icon="search" size="tiny"/><input type="text" id="search" name="search" onChange={this.handleSearch} value={search}/>
+          </div>
           {filteredPaintings.map(painting => {
             const json = JSON.stringify(painting);
             const blob = new Blob([json], {type: "application/json"});
             const url  = URL.createObjectURL(blob);
             return (
-              <li key={painting.paintingId}>
+              <div className="item" key={painting.paintingId}>
                 <span>{painting.title}</span>
-                <a download={`${painting.title}.json`} href={url}>D</a>
-                <button onClick={this.handleLoadFactory(painting)}>-></button>
-              </li>
+                <span className="actions">
+                  <a download={`${painting.title}.json`} href={url}><MaterialIcon icon="save" size="tiny"/></a>
+                  <a onClick={this.handleLoadFactory(painting)}><MaterialIcon icon="edit" size="tiny"/></a>
+                </span>
+              </div>
             );
           })}
-        </ul>
-        <button onClick={this.handleNew}>New Painting</button>
-        <button>
-          <input onChange={this.handleImport} type="file"/>
-        </button>
+        </div>
+        <div className="buttonPane">
+          <button onClick={this.handleNew}>New Painting</button>
+          <div className="fileWorkaround">
+            <button>
+              Import Painting
+            </button>
+            <input onChange={this.handleImport} type="file"/>
+          </div>
+        </div>
       </div>
     );
   }
