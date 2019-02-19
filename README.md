@@ -1,4 +1,5 @@
 # TSPaint
+Coding project for interview process.
 
 ### Instructions
 To build and run the program simply:
